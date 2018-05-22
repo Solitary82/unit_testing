@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha index.test.js"
+    "test": "mocha formatDate.test.js",
+    "test:watch": "mocha ./ski-jumps-scores/*.test.js -w"
   },
   "keywords": [],
   "author": "",
