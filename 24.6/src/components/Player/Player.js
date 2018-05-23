@@ -12,6 +12,10 @@ const Player = (props) => (
       className="player__btn player__btn--down"
       onClick={() => props.onPlayerScoreChange(-1)}
     >-</button>
+    <button
+      className="player__btn player__btn--delete"
+      onClick={() => props.onPlayerDelete(props.name)}
+    >X</button>
   </li>
 );
 

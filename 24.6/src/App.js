@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import PlayersList from './components/PlayersList/PlayersList'
 import AddPlayer from './components/AddPlayer/AddPlayer'
 
@@ -22,6 +20,12 @@ class App extends Component {
     })
   }
 
+  onPlayerDelete = (playerName) => {
+    this.setState({
+      players: this.state.players.filter(player => player.name !== playerName)
+    })
+  }
+
   onScoreUpdate = (playerIndex, scoreChange) => {
     this.setState({
       players: this.state.players.map((player, idx)=> {
@@ -40,6 +44,7 @@ class App extends Component {
         <PlayersList
           players={this.state.players}
           onScoreUpdate={this.onScoreUpdate}
+          onPlayerDelete={this.onPlayerDelete}
         />
       </div>
     );

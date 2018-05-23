@@ -24,9 +24,7 @@ it('should update player state score', () => {
     },
   ];
 
-  appComponent.setState({
-    players,
-  });
+  appComponent.setState({ players });
 
   const onScoreUpdate = appComponent.find('PlayersList').prop('onScoreUpdate');
 
@@ -48,4 +46,28 @@ it('should add new player to state', () => {
   expect(players[0].name).toEqual('Rafał');
   expect(players[0].score).toEqual(0);
 
+})
+
+it('should delete player from state', () => {
+  const appComponent = shallow(<App />);
+
+  const players = [
+    {
+      name: 'Andrzej',
+      score: 0,
+    },
+    {
+      name: 'Rafał',
+      score: 0,
+    },
+  ];
+
+  appComponent.setState({ players });
+
+  const onPlayerDelete = appComponent.find('PlayersList').prop('onPlayerDelete');
+  onPlayerDelete('Andrzej');
+
+  const statePlayers = appComponent.state().players;
+
+  expect(statePlayers.length).toEqual(1);
 })
